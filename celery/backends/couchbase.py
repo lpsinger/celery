@@ -9,7 +9,7 @@ from .base import KeyValueStoreBackend
 try:
     import couchbase_ffi # noqa
 except ImportError:
-    pass
+    pass # noqa
 try:
     from couchbase import Couchbase
     from couchbase.connection import Connection
