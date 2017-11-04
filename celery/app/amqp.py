@@ -25,7 +25,7 @@ from celery.utils.time import maybe_make_aware
 
 from . import routes as _routes
 
-__all__ = ['AMQP', 'Queues', 'task_message']
+__all__ = ('AMQP', 'Queues', 'task_message')
 
 PY3 = sys.version_info[0] == 3
 
@@ -356,6 +356,7 @@ class AMQP(object):
                 'lang': 'py',
                 'task': name,
                 'id': task_id,
+                'shadow': shadow,
                 'eta': eta,
                 'expires': expires,
                 'group': group_id,
@@ -398,7 +399,8 @@ class AMQP(object):
                    chord=None, callbacks=None, errbacks=None, reply_to=None,
                    time_limit=None, soft_time_limit=None,
                    create_sent_event=False, root_id=None, parent_id=None,
-                   shadow=None, now=None, timezone=None):
+                   shadow=None, now=None, timezone=None,
+                   **compat_kwargs):
         args = args or ()
         kwargs = kwargs or {}
         utc = self.utc

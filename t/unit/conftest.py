@@ -27,10 +27,10 @@ from celery.contrib.testing.mocks import (
 )
 
 # Tricks flake8 into silencing redefining fixtures warnings.
-__all__ = [
+__all__ = (
     'celery_app', 'celery_enable_logging', 'depends_on_current_app',
     'celery_parameters'
-]
+)
 
 try:
     WindowsError = WindowsError  # noqa

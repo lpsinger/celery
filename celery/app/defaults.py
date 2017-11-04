@@ -8,7 +8,7 @@ from celery.five import items, keys, python_2_unicode_compatible
 from celery.utils.functional import memoize
 from celery.utils.serialization import strtobool
 
-__all__ = ['Option', 'NAMESPACES', 'flatten', 'find']
+__all__ = ('Option', 'NAMESPACES', 'flatten', 'find')
 
 is_jython = sys.platform.startswith('java')
 is_pypy = hasattr(sys, 'pypy_version_info')
@@ -179,6 +179,7 @@ NAMESPACES = Namespace(
         ),
         persistent=Option(None, type='bool'),
         serializer=Option('json'),
+        backend_transport_options=Option({}, type='dict'),
     ),
     elasticsearch=Namespace(
         __old__=old_ns('celery_elasticsearch'),
